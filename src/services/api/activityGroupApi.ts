@@ -28,7 +28,7 @@ export const createActivity = async () => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      email: process.env.REACT_APP_EMAIL,
+      email: env.email,
       title: "New Activity",
     }),
   })

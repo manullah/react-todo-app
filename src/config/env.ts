@@ -1,4 +1,4 @@
 export const env = {
-  apiUrl: process.env.REACT_APP_API_URL,
-  email: process.env.REACT_APP_EMAIL,
+  apiUrl: "https://todo.api.devcode.gethired.id",
+  email: "mimanullah26@gmail.com",
 };
