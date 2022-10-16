@@ -26,6 +26,7 @@ const Select: React.FC<SelectProps> = ({
         {label}
       </label>
       <select
+        data-cy="modal-add-priority-dropdown"
         id={name}
         name={name}
         value={value}
