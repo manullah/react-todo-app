@@ -13,8 +13,8 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
   handleDelete,
 }) => {
   return (
-    <div data-cy="activity-item" className="bg-white shadow-lg rounded-xl p-8">
-      <Link to={`/detail/${activity.id}`}>
+    <div className="bg-white shadow-lg rounded-xl p-8">
+      <Link data-cy="activity-item" to={`/detail/${activity.id}`}>
         <h4 data-cy="activity-item-title" className="text-xl font-bold mb-4">
           {activity.title}
         </h4>
