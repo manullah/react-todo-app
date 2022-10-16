@@ -26,7 +26,6 @@ const Select: React.FC<SelectProps> = ({
         {label}
       </label>
       <select
-        data-cy="modal-add-priority-dropdown"
         id={name}
         name={name}
         value={value}
@@ -35,7 +34,11 @@ const Select: React.FC<SelectProps> = ({
       >
         {options.map((option, index) => {
           return (
-            <option key={index} value={option.value}>
+            <option
+              data-cy="modal-add-priority-dropdown"
+              key={index}
+              value={option.value}
+            >
               {option.text}
             </option>
           );
