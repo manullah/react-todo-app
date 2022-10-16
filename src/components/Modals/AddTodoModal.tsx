@@ -79,10 +79,6 @@ const AddTodoModal: React.FC<AddTodoModalProps> = ({
             { label: "Low", value: Priority.Low },
             { label: "Very Low", value: Priority.VeryLow },
           ]}
-          dataCy={{
-            label: "modal-add-priority-title",
-            input: "modal-add-name-input",
-          }}
           onChange={(value) =>
             setAddTodoState((prev) => ({ ...prev, priority: value }))
           }

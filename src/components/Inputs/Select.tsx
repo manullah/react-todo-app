@@ -10,10 +10,6 @@ type SelectProps = {
   label: string;
   value: string;
   options: Array<Option>;
-  dataCy?: {
-    label: string;
-    input: string;
-  };
   onChange: (value: string) => void;
 };
 
@@ -22,12 +18,15 @@ const Select: React.FC<SelectProps> = ({
   label,
   value,
   options,
-  dataCy,
   onChange,
 }) => {
   return (
     <div>
-      <label htmlFor={name} className="block text-sm font-medium text-gray-700">
+      <label
+        data-cy="modal-add-priority-title"
+        htmlFor={name}
+        className="block text-sm font-medium text-gray-700"
+      >
         {label}
       </label>
       <ReactSelect
