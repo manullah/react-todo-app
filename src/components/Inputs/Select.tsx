@@ -1,4 +1,9 @@
-type Option = { text: string; value: string };
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import ReactSelect from "react-select";
+import { priorityColors } from "../../config/colors";
+import { Priority } from "../../services/enum/todoListEnum";
+
+type Option = { label: string; value: Priority };
 
 type SelectProps = {
   name: string;
@@ -25,27 +30,32 @@ const Select: React.FC<SelectProps> = ({
       <label htmlFor={name} className="block text-sm font-medium text-gray-700">
         {label}
       </label>
-      <select
-        id={name}
-        name={name}
-        value={value}
-        className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-primary focus:outline-none focus:ring-primary sm:text-sm"
-        onChange={(value) => onChange(value.target.value)}
-      >
-        {options.map((option, index) => {
-          return (
-            <option
-              key={index}
-              value={option.value}
-              {...(option.value === value && {
-                dataCy: "modal-add-priority-dropdown",
-              })}
-            >
-              {option.text}
-            </option>
-          );
-        })}
-      </select>
+      <ReactSelect
+        defaultValue={options[0]}
+        formatOptionLabel={({ value, label }) => (
+          <div
+            data-cy="modal-add-priority-item"
+            className="flex items-center gap-4"
+          >
+            <div
+              className="w-5 h-5 rounded-full"
+              style={{ backgroundColor: priorityColors[value] }}
+            ></div>
+            <div>{label}</div>
+          </div>
+        )}
+        options={options}
+        className="mt-1 block w-full rounded-md border-gray-300 text-base focus:border-primary focus:outline-none focus:ring-primary sm:text-sm"
+        onChange={(e) => onChange(e?.value || "")}
+        components={{
+          DropdownIndicator: () => (
+            <ChevronDownIcon
+              data-cy="modal-add-priority-dropdown"
+              className="w-4 h-4 mx-4"
+            />
+          ),
+        }}
+      />
     </div>
   );
 };

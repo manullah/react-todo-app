@@ -73,11 +73,11 @@ const AddTodoModal: React.FC<AddTodoModalProps> = ({
           label="PRIORITY"
           value={addTodoState.priority}
           options={[
-            { text: "Very High", value: Priority.VeryHigh },
-            { text: "High", value: Priority.High },
-            { text: "Medium", value: Priority.Medium },
-            { text: "Low", value: Priority.Low },
-            { text: "Very Low", value: Priority.VeryLow },
+            { label: "Very High", value: Priority.VeryHigh },
+            { label: "High", value: Priority.High },
+            { label: "Medium", value: Priority.Medium },
+            { label: "Low", value: Priority.Low },
+            { label: "Very Low", value: Priority.VeryLow },
           ]}
           dataCy={{
             label: "modal-add-priority-title",
