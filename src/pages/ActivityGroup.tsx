@@ -42,6 +42,7 @@ const ActivityGroupPage = () => {
 
     return (
       <img
+        data-cy="activity-empty-state"
         src="/assets/activity-empty-state.svg"
         alt="empty"
         className="mx-auto my-4"
@@ -52,8 +53,14 @@ const ActivityGroupPage = () => {
   return (
     <>
       <div className="my-12 flex justify-between items-center">
-        <h1 className="text-4xl font-bold">Activity</h1>
-        <button className="btn-primary" onClick={handleCreate}>
+        <h1 data-cy="activity-title" className="text-4xl font-bold">
+          Activity
+        </h1>
+        <button
+          data-cy="activity-add-button"
+          className="btn-primary"
+          onClick={handleCreate}
+        >
           <PlusIcon className="h-6 w-6 mr-2" />
           Tambah
         </button>

@@ -13,12 +13,16 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
   handleDelete,
 }) => {
   return (
-    <div className="bg-white shadow-lg rounded-xl p-8">
+    <div data-cy="activity-item" className="bg-white shadow-lg rounded-xl p-8">
       <Link to={`/detail/${activity.id}`}>
-        <h4 className="text-xl font-bold mb-4">{activity.title}</h4>
+        <h4 data-cy="activity-item-title" className="text-xl font-bold mb-4">
+          {activity.title}
+        </h4>
       </Link>
       <div className="flex justify-between text-gray-400">
-        <p>{moment(activity.created_at).format("DD MMMM YYYY")}</p>
+        <p data-cy="activity-item-date">
+          {moment(activity.created_at).format("DD MMMM YYYY")}
+        </p>
         <DeleteModal
           title={
             <p>
@@ -26,6 +30,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
               <strong>“{activity.title}</strong>?
             </p>
           }
+          buttonCy="activity-item-delete-button"
           onConfirm={() => handleDelete(activity.id)}
         ></DeleteModal>
       </div>

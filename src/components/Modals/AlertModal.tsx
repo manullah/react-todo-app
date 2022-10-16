@@ -10,6 +10,7 @@ const AlertModal: React.FC = () => {
       <Transition.Root show={alert.show} as={Fragment}>
         <Dialog
           as="div"
+          data-cy="modal-information"
           className="relative z-10"
           onClose={() => setAlert((prev) => ({ ...prev, show: false }))}
         >

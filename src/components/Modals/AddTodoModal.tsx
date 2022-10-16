@@ -33,6 +33,12 @@ const AddTodoModal: React.FC<AddTodoModalProps> = ({
       button={button}
       header={{ text: `${initialData ? "Ubah" : "Tambah"} List Item` }}
       buttonOk={{ disabled: !(addTodoState.title && addTodoState.priority) }}
+      dataCy={{
+        modal: "modal-add",
+        title: "modal-add-title",
+        close: "modal-add-close-button",
+        confirm: "modal-add-save-button",
+      }}
       onConfirm={() => {
         onConfirm(addTodoState);
         setAddTodoState(initialTodoState());
@@ -53,6 +59,10 @@ const AddTodoModal: React.FC<AddTodoModalProps> = ({
           label="NAMA LIST ITEM"
           placeholder="Tambahkan Nama Activity"
           value={addTodoState.title}
+          dataCy={{
+            label: "modal-add-name-title",
+            input: "modal-add-name-input",
+          }}
           onChange={(value) =>
             setAddTodoState((prev) => ({ ...prev, title: value }))
           }
@@ -69,6 +79,10 @@ const AddTodoModal: React.FC<AddTodoModalProps> = ({
             { text: "Low", value: Priority.Low },
             { text: "Very Low", value: Priority.VeryLow },
           ]}
+          dataCy={{
+            label: "modal-add-priority-title",
+            input: "modal-add-name-input",
+          }}
           onChange={(value) =>
             setAddTodoState((prev) => ({ ...prev, priority: value }))
           }

@@ -52,7 +52,7 @@ const SortingButton: React.FC<SortingButtonProps> = ({ onSort }) => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="p-4">
+        <Menu.Button data-cy="todo-sort-button" className="p-4">
           <ArrowsUpDownIcon className="w-6 h-6" />
         </Menu.Button>
       </div>
@@ -68,9 +68,10 @@ const SortingButton: React.FC<SortingButtonProps> = ({ onSort }) => {
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           {menus.map((menu, index) => (
-            <Menu.Item key={index}>
+            <Menu.Item key={index} data-cy="sort-selection">
               {({ active }) => (
                 <div
+                  data-cy="sort-selection-selected"
                   className="flex items-center justify-between px-6 py-4 cursor-pointer hover:bg-gray-100"
                   onClick={() => {
                     setIsActived(menu.value);
@@ -78,8 +79,8 @@ const SortingButton: React.FC<SortingButtonProps> = ({ onSort }) => {
                   }}
                 >
                   <div className="flex items-center gap-2">
-                    {menu.icon}
-                    <p>{menu.text}</p>
+                    <div data-cy="sort-selection-icon">{menu.icon}</div>
+                    <p data-cy="sort-selection-title">{menu.text}</p>
                   </div>
                   {isActived === menu.value && (
                     <CheckIcon className="w-4 h-4" />

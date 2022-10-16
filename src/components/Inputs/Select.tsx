@@ -5,6 +5,10 @@ type SelectProps = {
   label: string;
   value: string;
   options: Array<Option>;
+  dataCy?: {
+    label: string;
+    input: string;
+  };
   onChange: (value: string) => void;
 };
 
@@ -13,6 +17,7 @@ const Select: React.FC<SelectProps> = ({
   label,
   value,
   options,
+  dataCy,
   onChange,
 }) => {
   return (

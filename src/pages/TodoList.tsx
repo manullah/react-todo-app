@@ -87,6 +87,7 @@ const TodoListPage = () => {
 
     return (
       <img
+        data-cy="todo-empty-state"
         src="/assets/todo-empty-state.svg"
         alt="empty"
         className="mx-auto my-4"
@@ -99,6 +100,7 @@ const TodoListPage = () => {
       <div className="my-12 flex justify-between items-center">
         <div className="flex items-center">
           <ChevronLeftIcon
+            data-cy="todo-back-button"
             className="h-6 w-6 mr-8 cursor-pointer"
             onClick={() => navigate(-1)}
           />
@@ -119,12 +121,14 @@ const TodoListPage = () => {
           ) : (
             <h1
               className="text-4xl font-bold cursor-pointer"
+              data-cy="todo-title"
               onClick={editActivity}
             >
               {activityDetail?.title}
             </h1>
           )}
           <PencilIcon
+            data-cy="todo-title-edit-button"
             className="h-6 w-6 ml-4 cursor-pointer"
             onClick={editActivity}
           />
@@ -134,7 +138,7 @@ const TodoListPage = () => {
           <SortingButton onSort={(sort) => doSorting(sort)} />
           <AddTodoModal
             button={
-              <button className="btn-primary">
+              <button data-cy="todo-add-button" className="btn-primary">
                 <PlusIcon className="h-6 w-6 mr-2" />
                 Tambah
               </button>

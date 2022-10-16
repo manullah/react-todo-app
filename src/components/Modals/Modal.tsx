@@ -14,6 +14,14 @@ type ModalProps = {
     class?: string;
     disabled?: boolean;
   };
+  dataCy?: {
+    modal?: string;
+    body?: string;
+    title?: string;
+    close?: string;
+    cancel?: string;
+    confirm?: string;
+  };
   onConfirm: () => void;
   onOpen?: () => void;
 };
@@ -23,6 +31,7 @@ const Modal: React.FC<ModalProps> = ({
   button,
   header = { hide: false, text: "" },
   buttonOk,
+  dataCy,
   onConfirm,
   onOpen,
 }) => {
@@ -39,7 +48,12 @@ const Modal: React.FC<ModalProps> = ({
     <>
       <div onClick={() => setOpen((prev) => !prev)}>{button}</div>
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={setOpen}>
+        <Dialog
+          data-cy={dataCy?.modal}
+          as="div"
+          className="relative z-10"
+          onClose={setOpen}
+        >
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -53,7 +67,10 @@ const Modal: React.FC<ModalProps> = ({
           </Transition.Child>
 
           <div className="fixed inset-0 z-10 overflow-y-auto">
-            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <div
+              data-cy={dataCy?.body}
+              className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+            >
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -66,8 +83,11 @@ const Modal: React.FC<ModalProps> = ({
                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl">
                   {!header.hide && (
                     <div className="px-4 pt-5 sm:p-6 border-b flex justify-between">
-                      <h5 className="font-semibold">{header.text}</h5>
+                      <h5 data-cy={dataCy?.title} className="font-semibold">
+                        {header.text}
+                      </h5>
                       <div
+                        data-cy={dataCy?.close}
                         className="cursor-pointer"
                         onClick={() => setOpen(false)}
                       >
@@ -82,6 +102,7 @@ const Modal: React.FC<ModalProps> = ({
 
                     <div className="sm:flex sm:flex-row-reverse justify-center gap-4">
                       <button
+                        data-cy={dataCy?.confirm}
                         type="button"
                         className={buttonOk?.class || "btn-primary"}
                         disabled={buttonOk?.disabled}
@@ -93,6 +114,7 @@ const Modal: React.FC<ModalProps> = ({
                         {buttonOk?.text || "Simpan"}
                       </button>
                       <button
+                        data-cy={dataCy?.cancel}
                         type="button"
                         className="btn-secondary"
                         onClick={() => setOpen(false)}
