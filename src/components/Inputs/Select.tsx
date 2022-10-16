@@ -35,9 +35,11 @@ const Select: React.FC<SelectProps> = ({
         {options.map((option, index) => {
           return (
             <option
-              data-cy="modal-add-priority-dropdown"
               key={index}
               value={option.value}
+              {...(option.value === value && {
+                dataCy: "modal-add-priority-dropdown",
+              })}
             >
               {option.text}
             </option>

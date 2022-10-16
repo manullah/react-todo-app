@@ -1,4 +1,3 @@
-import moment from "moment";
 import { useState } from "react";
 import {
   createTodo,
@@ -71,21 +70,13 @@ export const useTodoListHelper = () => {
     switch (sort) {
       case Sort.Newest:
         setTodoList((prev) => {
-          prev?.data.sort((a, b) => {
-            if (moment(a.created_at) < moment(b.created_at)) return -1;
-            if (moment(a.title) > moment(b.title)) return 1;
-            return 0;
-          });
+          prev?.data.sort((a, b) => +b.id - +a.id);
           return prev;
         });
         break;
       case Sort.Latest:
         setTodoList((prev) => {
-          prev?.data.sort((a, b) => {
-            if (moment(a.created_at) > moment(b.created_at)) return -1;
-            if (moment(a.title) < moment(b.title)) return 1;
-            return 0;
-          });
+          prev?.data.sort((a, b) => +a.id - +b.id);
           return prev;
         });
         break;
